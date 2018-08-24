@@ -6,6 +6,7 @@ if [ $# -ne 2 ];
 fi
 
 cd $1
-readlink -f *.MP4 > files.txt
+greadlink -f *.MP4 > files.txt
 sed -i -e 's/^/file /' files.txt
 ffmpeg -safe 0 -f concat -i $1/files.txt -c copy $2
+#ffmpeg -i $2 -s 1920x1080 -c:a copy new_$2
